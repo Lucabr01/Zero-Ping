@@ -1,5 +1,19 @@
-# Zero-Ping
+# 🛡️🎧 Zero-Ping
 
-Back in the day, I was deep into competitive multiplayer FPS games, and nothing was more frustrating than the packet loss icon popping up on my screen thanks to my crappy connection. These days, I'm all about audio and AI—so why not mash those worlds together? For my **Deep Learning course** final project, I built a fully trained Neural Audio Codec that can handle packet losses.
+Who has not experienced the frustration of packet loss while playing online games? This project addresses packet loss concealment for real-time mono 16 kHz speech transmission in a "neural way". ___Zero-Ping___ is an end-to-end trained neural audio codec based on an RVQ-GAN architecture, designed to reconstruct the audio waveform even when some transmitted packets are lost.
 
-In the chapters ahead, I'll break down all the details: datasets, packetization, packet loss simulation (**Gilbert-Elliott model**), architectures, training, and evaluation. For a quick overview, code guide, or to test the model yourself, check after the conclusions.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+### 🗺️ Code Navigation
+
+* **`GilbertElliot.py`** — Simulates packet loss over a network channel using a two-state Markov model (Good/Bad). Used during training to generate realistic burst-loss patterns.
+* **`components.py`** — Causal convolutional encoder and decoder that form the backbone of the codec.
+* **`repair.py`** — Transformer that reconstructs lost audio frames in the latent space after packet loss.
+* **`model.py`** — Full codec model assembling all components (encoder, quantizer, repair, decoder) into a single module.
+* **`losses.py`** — All generator-side loss functions used to train the codec toward high-quality speech reconstruction.
+* **`msstftd_16k_speech.py`** — GAN discriminator and its associated loss functions, adapted for 16 kHz mono speech.
+* **`trainer.py`** — Training wrapper that coordinates the codec, discriminator, and losses in the correct D-step / G-step order.
+* **`Utils.py`** — Low-level building blocks shared across the codebase (custom layers, activations).
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
