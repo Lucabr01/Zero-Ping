@@ -17,3 +17,11 @@ Who has not experienced the frustration of packet loss while playing online game
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+### ⚙️ Installation & Requirements
+
+All the necessary dependencies to run, train, and test the **Zero-Ping** codec are listed in the `requirements.txt` file. 
+
+It is highly recommended to set up a virtual environment (using `venv` or `conda`) before installing the packages to avoid version conflicts. Once your environment is active, you can install everything by running the following command in your terminal:
+
+```bash
+pip install -r requirements.txt
