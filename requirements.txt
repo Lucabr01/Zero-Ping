@@ -1,0 +1,35 @@
+# Core
+# torch and torchaudio must be installed manually to match your CUDA version.
+# See https://pytorch.org/get-started/locally/ for the correct command.
+# Example for CUDA 12.1:
+#   pip install torch torchaudio --index-url https://download.pytorch.org/whl/cu121
+torch>=2.1.0
+torchaudio>=2.1.0
+numpy>=1.24.0
+
+# Model
+vector-quantize-pytorch>=1.14.0
+einops>=0.7.0
+
+# Audio I/O & dataset
+soundfile>=0.12.0
+tqdm>=4.65.0
+
+# Audio analysis & visualization
+# Required for STFT, mel spectrograms, waveform plotting and evaluation notebooks
+librosa>=0.10.0
+matplotlib>=3.7.0
+
+# Notebook support
+# Required for interactive audio playback (Audio, display) in Jupyter notebooks
+# Not needed for server-side training — install only in Jupyter environments
+ipython>=8.0.0
+
+# Evaluation metrics (optional but recommended)
+# On Windows, pesq may require a C compiler. If installation fails, use:
+#   pip install pesq --only-binary=:all:
+pesq>=0.0.4
+pystoi>=0.3.3
+
+# Logging (optional)
+tensorboard>=2.14.0
