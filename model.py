@@ -1,5 +1,5 @@
 """
-ZPCodec: full codec model combining encoder, RVQ, optional repair, and decoder.
+ZPCodec: full codec model combining encoder, quantizer, optional repair, and decoder.
 
 Data flow:
     waveform [B, 1, T]
