@@ -25,3 +25,19 @@ It is highly recommended to set up a virtual environment (using `venv` or `conda
 
 ```bash
 pip install -r requirements.txt
+```
+
+The pre-trained version of **Zero-Ping** is publicly available on Hugging Face:
+
+[https://huggingface.co/Lucabr01/Zero-Ping](https://huggingface.co/Lucabr01/Zero-Ping)
+
+The Hugging Face repository contains the model checkpoint and the instructions required to use it for inference. Check it out!
+
+### Try the Model
+
+An inference test for **Zero-Ping** is available through the following Google Colab notebook:
+
+[https://colab.research.google.com/drive/1S5OawwYIjd88uhVp1Vs7dog4gKcdvo-y?usp=sharing](https://colab.research.google.com/drive/1S5OawwYIjd88uhVp1Vs7dog4gKcdvo-y?usp=sharing)
+
+The notebook allows users to run the pre-trained model directly and test the codec on custom audio files. A GPU runtime is not required for standard inference, since the model is lightweight and runs quickly on CPU. Using a GPU may only be useful when processing very long audio files.
+
