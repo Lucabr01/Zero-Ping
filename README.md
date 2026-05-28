@@ -14,6 +14,7 @@ Who has not experienced the frustration of packet loss while playing online game
 * **`msstftd_16k_speech.py`** — GAN discriminator and its associated loss functions, adapted for 16 kHz mono speech.
 * **`trainer.py`** — Training wrapper that coordinates the codec, discriminator, and losses in the correct D-step / G-step order.
 * **`Utils.py`** — Low-level building blocks shared across the codebase (custom layers, activations).
+* weights of the model available on huggings faces (too big for github), check below for the link. 
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
