@@ -2,7 +2,7 @@
 trainer.py — Training wrapper.
 
 Bundles together:
-  - ZPCodec                              (encoder + RVQ + repairTransformer + decoder)
+  - ZPCodec                              (encoder + quantizer + repairTransformer + decoder)
   - SpeechMultiScaleSTFTDiscriminator    
   - CodecLosses                           
 
