@@ -273,8 +273,10 @@ class LatentRepairTransformer(nn.Module):
                     Values at received-frame positions are arbitrary —
                     selective substitution happens upstream in ZPCodec._apply_repair.
 
-        Ive chosen to keep the value as 0 for lost frames even in the buffer, after their previous estimation.
-        This can help prevent error accumulation during long bursts. 
+        I keep frame_mask unchanged between passes: lost frames stay 0 in the mask
+        even after pass-1 estimates fill the buffer. This way the transformer in
+        pass 2 still knows those frames were lost, limiting error accumulation in long bursts.
+        
         """
         # Pass 1: fill missing with placeholder, run transformer
         z_masked_1 = self.fill_missing(z_q, frame_mask)
