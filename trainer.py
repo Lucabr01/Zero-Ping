@@ -242,6 +242,6 @@ class ZPCodecTrainer(nn.Module):
         else:
             loss_total = loss_recon
 
-        # 'total' is the only live tensor — all others are detached for logging
+        # 'total' is the only live tensor, all others are detached for logging
         components['total'] = loss_total
         return components
