@@ -31,8 +31,8 @@ Default weights chosen for 16 kHz voice chat without balancer (EnCodec used one)
     λ_time   = 1.0    (phase / waveform fidelity, secondary driver)
     λ_mel    = 15.0   (main perceptual driver, RVQGAN-style)
     λ_commit = 0.25   (RVQ commit loss, RVQGAN-style)
-    λ_repair = 0.0    (direct supervision on missing frames - used only in the second stage as the main driver) 
-    λ_stft   = 0.0    (direct penalty on linear STFT magnitudes)
+    λ_repair = 0.0    (direct supervision on missing frames - used only in the second stage as the main driver) - 0 cuz added later, applyed only during the transformer initialization! balanced with mel at 50-50 
+    λ_stft   = 0.0    (direct penalty on linear STFT magnitudes) - added later! wanna see why? check the picture in the \pics directory.
 """
 
 import typing as tp
