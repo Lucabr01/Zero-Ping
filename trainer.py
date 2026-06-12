@@ -245,3 +245,22 @@ class ZPCodecTrainer(nn.Module):
         # 'total' is the only live tensor, all others are detached for logging
         components['total'] = loss_total
         return components
+
+"""
+Audio preprocessing note.
+
+To train or fine tune the model, the following audio preprocessing is needed:
+each input waveform must be loaded as float audio, converted to mono,
+resampled to 16 kHz, and cropped or zero-padded to a fixed-length
+segment. In the default setup, i used a segment length of 2.4 seconds, corresponding
+to 38400 samples at 16 kHz.
+
+The segment length is not an architectural requirement of the codec, but it must
+be kept consistent across the batch and should be a multiple of the codec
+hop length, which is 240 samples. This avoids remainder
+issues between the encoder and decoder ( in few words it make the work easier :) ).
+
+Before being passed to the codec, the waveform should also be constrained to
+the [-1, 1] range through conditional peak normalization: if max(abs(wav)) > 1.0,
+divide the waveform by max(abs(wav)).
+"""
