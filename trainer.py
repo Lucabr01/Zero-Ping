@@ -26,8 +26,8 @@ Intended training loop pattern:
 
 Why a single forward_codec call?
     x_fake must be the same tensor for both the D-step and the G-step.
-    If we called the codec twice we'd get two different outputs (dropout,
-    GE mask sampling), and the D would be trained on a different sample
+    If we called the codec twice we'd get two different outputs (
+    GE mask sampling etc...), and the D would be trained on a different sample
     than the G breaking the adversarial game.
 
 Default loss weights:
