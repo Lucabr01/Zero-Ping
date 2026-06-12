@@ -379,24 +379,24 @@ class SpeechMultiScaleSTFTDiscriminator(nn.Module):
 
 
 
+"""
+ GAN training uses three distinct loss terms, each targeting a different set
+ of parameters. The training step order matters:
 
-# GAN training uses three distinct loss terms, each targeting a different set
-# of parameters. The training step order matters:
-#
-#   1. discriminator_hinge_loss  -> updates discriminator (opt_D)
-#                                   x_fake must be detached to block grad flow
-#                                   into the codec/generator
-#
-#   2. generator_hinge_loss      -> updates generator/decoder (opt_G)
-#                                   x_fake must NOT be detached here
-#
-#   3. feature_matching_loss     -> updates generator/decoder (opt_G)
-#                                   real fmaps must be detached so the generator
-#                                   moves toward real features without
-#                                   backpropagating through the discriminator
-#
-# (2) and (3) are summed into a single generator loss and optimized together.
+   1. discriminator_hinge_loss  -> updates discriminator (opt_D)
+                                   x_fake must be detached to block grad flow
+                                   into the codec/generator
 
+   2. generator_hinge_loss      -> updates generator/decoder (opt_G)
+                                   x_fake must NOT be detached here
+
+   3. feature_matching_loss     -> updates generator/decoder (opt_G)
+                                   real fmaps must be detached so the generator
+                                   moves toward real features without
+                                   backpropagating through the discriminator
+
+ (2) and (3) are summed into a single generator loss and optimized together.
+"""
 
 def discriminator_hinge_loss(
     real_logits: tp.Sequence[torch.Tensor],
