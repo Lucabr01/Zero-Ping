@@ -62,8 +62,8 @@ class MultiScaleMelLoss(nn.Module):
     def __init__(
         self,
         sample_rate: int = 16000,
-        window_lengths: tp.List[int] = [32, 64, 128, 256, 512, 1024, 2048],
-        n_mels: tp.List[int] = [5, 10, 20, 40, 64, 80, 80],
+        window_lengths: tp.List[int] = [64, 128, 256, 512, 1024, 2048],
+        n_mels: tp.List[int] = [10, 20, 40, 64, 80, 80],
         log_eps: float = 1e-5,
         f_min: float = 0.0,
         f_max: tp.Optional[float] = None,
