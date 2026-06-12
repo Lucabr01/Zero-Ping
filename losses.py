@@ -277,8 +277,8 @@ class CodecLoss(nn.Module):
         lambda_commit: float = 0.25,
         lambda_repair: float = 0.0,
         lambda_stft: float = 0.0,
-        mel_window_lengths: tp.List[int] = [32, 64, 128, 256, 512, 1024, 2048],
-        mel_n_mels: tp.List[int] = [5, 10, 20, 40, 64, 80, 80],
+        mel_window_lengths: tp.List[int] = [64, 128, 256, 512, 1024, 2048],
+        mel_n_mels: tp.List[int] = [10, 20, 40, 64, 80, 80],
         stft_window_lengths: tp.List[int] = [160, 320, 640, 1280],
     ):
         super().__init__()
