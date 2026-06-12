@@ -136,23 +136,6 @@ class NormConv1d(nn.Module):
         return x
 
 
-class NormConv2d(nn.Module):
-    """Wrapper around Conv2d and normalization applied to this conv
-    to provide a uniform interface across normalization approaches.
-    """
-    def __init__(self, *args, norm: str = 'none',
-                 norm_kwargs: tp.Dict[str, tp.Any] = {}, **kwargs):
-        super().__init__()
-        self.conv = apply_parametrization_norm(nn.Conv2d(*args, **kwargs), norm)
-        self.norm = get_norm_module(self.conv, causal=False, norm=norm, **norm_kwargs)
-        self.norm_type = norm
-
-    def forward(self, x):
-        x = self.conv(x)
-        x = self.norm(x)
-        return x
-
-
 class NormConvTranspose1d(nn.Module):
     """Wrapper around ConvTranspose1d and normalization applied to this conv
     to provide a uniform interface across normalization approaches.
@@ -169,21 +152,6 @@ class NormConvTranspose1d(nn.Module):
         x = self.norm(x)
         return x
 
-
-class NormConvTranspose2d(nn.Module):
-    """Wrapper around ConvTranspose2d and normalization applied to this conv
-    to provide a uniform interface across normalization approaches.
-    """
-    def __init__(self, *args, norm: str = 'none',
-                 norm_kwargs: tp.Dict[str, tp.Any] = {}, **kwargs):
-        super().__init__()
-        self.convtr = apply_parametrization_norm(nn.ConvTranspose2d(*args, **kwargs), norm)
-        self.norm = get_norm_module(self.convtr, causal=False, norm=norm, **norm_kwargs)
-
-    def forward(self, x):
-        x = self.convtr(x)
-        x = self.norm(x)
-        return x
 
 
 class SConv1d(nn.Module):
@@ -265,15 +233,6 @@ class SConvTranspose1d(nn.Module):
             padding_left = padding_total - padding_right
             y = unpad1d(y, (padding_left, padding_right))
         return y
-
-def get_2d_padding(
-    kernel_size: tp.Tuple[int, int],
-    dilation: tp.Tuple[int, int] = (1, 1),
-) -> tp.Tuple[int, int]:
-    return (
-        ((kernel_size[0] - 1) * dilation[0]) // 2,
-        ((kernel_size[1] - 1) * dilation[1]) // 2,
-    )
 
 
 class Snake(nn.Module):
